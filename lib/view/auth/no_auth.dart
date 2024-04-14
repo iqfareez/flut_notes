@@ -44,13 +44,18 @@ class _NoAuthState extends State<NoAuth> {
                   child: Padding(
                     padding: EdgeInsets.all(8.0),
                     child: Text(
-                        'Your notes can\'t be restored if the app is unistalled or changed phone.'),
+                      'Your notes can\'t be restored if the app is unistalled or changed phone.',
+                      textAlign: TextAlign.center,
+                    ),
                   ),
                 ),
                 const SizedBox(height: 10),
                 ElevatedButton(
                   style: ElevatedButton.styleFrom(
-                      padding: const EdgeInsets.symmetric(horizontal: 30)),
+                    padding: const EdgeInsets.symmetric(horizontal: 30),
+                    backgroundColor: Theme.of(context).colorScheme.primary,
+                    foregroundColor: Theme.of(context).colorScheme.onPrimary,
+                  ),
                   onPressed: _isOperation
                       ? null
                       : () {

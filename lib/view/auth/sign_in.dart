@@ -26,7 +26,9 @@ class _SignInState extends State<SignIn> {
               children: [
                 ElevatedButton(
                     style: ElevatedButton.styleFrom(
-                        backgroundColor: Colors.orange.shade300),
+                      backgroundColor: Theme.of(context).colorScheme.primary,
+                      foregroundColor: Theme.of(context).colorScheme.onPrimary,
+                    ),
                     onPressed: () {
                       Navigator.push(
                         context,
@@ -35,6 +37,11 @@ class _SignInState extends State<SignIn> {
                       );
                     },
                     child: const Text('Continue with phone number')),
+                const SizedBox(height: 10),
+                const Text(
+                  'or',
+                  textAlign: TextAlign.center,
+                ),
                 TextButton(
                   onPressed: () {
                     Navigator.of(context).push(

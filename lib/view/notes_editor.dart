@@ -17,9 +17,8 @@ class _NotesEditorState extends State<NotesEditor> {
   late final CollectionReference _userNotesReference;
   late final TextEditingController _titleController;
   late final TextEditingController _noteController;
-  late bool _isNew;
   late bool _enableEditing;
-  late String _documentId;
+  String? _documentId;
   bool _isSavingOperation = false;
 
   @override
@@ -29,10 +28,10 @@ class _NotesEditorState extends State<NotesEditor> {
         FirebaseFirestore.instance.collection('/flutnotes/$_userUid/usernotes');
     _titleController = TextEditingController(text: widget.userNotes.title);
     _noteController = TextEditingController(text: widget.userNotes.note);
-    _isNew = widget.userNotes.docId ==
-        null; // is this new document created or editing existing
-    _documentId = widget.userNotes.docId!;
-    _enableEditing = _isNew;
+    // if null, it indicates that user open a new note
+    _documentId = widget.userNotes.docId;
+    // When documentId is null, it means user is creating a new note
+    _enableEditing = _documentId == null;
   }
 
   /// Check whether is there any unsaved changes
@@ -121,7 +120,7 @@ class _NotesEditorState extends State<NotesEditor> {
                                     // if creating new doc, should add to databse
                                     // if editing existing document, should update
                                     // the database
-                                    if (_isNew) {
+                                    if (_documentId == null) {
                                       _userNotesReference.add({
                                         'title': _titleController.text,
                                         'note': _noteController.text,
@@ -131,7 +130,6 @@ class _NotesEditorState extends State<NotesEditor> {
                                         print('Notes ${value.id} created');
                                         setState(() {
                                           _documentId = value.id;
-                                          _isNew = false;
                                           _enableEditing = false;
                                           _isSavingOperation = false;
                                         });

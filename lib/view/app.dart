@@ -78,6 +78,7 @@ class _AppState extends State<App> {
               ],
       ),
       floatingActionButton: OpenContainer(
+        clipBehavior: Clip.none,
         openBuilder: (context, action) {
           DateTime now = DateTime.now();
           return NotesEditor(
@@ -85,8 +86,8 @@ class _AppState extends State<App> {
                   title:
                       'Notes ${now.year}-${now.month}-${now.day} ${now.hour}${now.second}'));
         },
-        closedShape: const CircleBorder(),
-        // closedElevation: 5.0,
+        // closedShape: const CircleBorder(),
+        closedElevation: 0.0,
         closedBuilder: (context, action) {
           return FloatingActionButton(
             child: const Icon(Icons.add),

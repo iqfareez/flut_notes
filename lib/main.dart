@@ -23,6 +23,8 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Flutnotes',
       theme: ThemeData(
+          useMaterial3: true,
+          colorScheme: ColorScheme.fromSeed(seedColor: Colors.orange),
           primarySwatch: Colors.orange,
           primaryColor: Colors.yellow.shade200,
           fontFamily: GoogleFonts.ubuntu().fontFamily,
