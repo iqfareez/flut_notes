@@ -56,12 +56,11 @@ class _PhoneAuthState extends State<PhoneAuth> {
 
   void goToFinishAuth(String message, User user) {
     Navigator.pushReplacement(
-        context,
-        MaterialPageRoute(
-            builder: (builder) => AuthFinish(
-                  welcomeText: message,
-                  user: user,
-                )));
+      context,
+      MaterialPageRoute(
+        builder: (builder) => AuthFinish(welcomeText: message, user: user),
+      ),
+    );
   }
 
   Future<void> verifySmsCode(String smsCode) async {
@@ -88,20 +87,21 @@ class _PhoneAuthState extends State<PhoneAuth> {
       _smsCodeController.clear();
       if (e.code == "invalid-verification-code") {
         showDialog(
-            context: context,
-            builder: (context) {
-              return AlertDialog(
-                title: const Text('Invalid SMS code'),
-                content: const Text('Please reenter the SMS code'),
-                actions: [
-                  TextButton(
-                      onPressed: () {
-                        Navigator.pop(context);
-                      },
-                      child: const Text('OK'))
-                ],
-              );
-            });
+          context: context,
+          builder: (context) {
+            return AlertDialog(
+              title: const Text('Invalid SMS code'),
+              content: const Text('Please reenter the SMS code'),
+              actions: [
+                TextButton(
+                    onPressed: () {
+                      Navigator.pop(context);
+                    },
+                    child: const Text('OK'))
+              ],
+            );
+          },
+        );
       }
     }
   }

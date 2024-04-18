@@ -23,19 +23,18 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Flutnotes',
       theme: ThemeData(
-          useMaterial3: true,
-          colorScheme: ColorScheme.fromSeed(seedColor: Colors.orange),
-          primarySwatch: Colors.orange,
-          primaryColor: Colors.yellow.shade200,
-          fontFamily: GoogleFonts.ubuntu().fontFamily,
-          appBarTheme: const AppBarTheme(
-            systemOverlayStyle: SystemUiOverlayStyle(
-                statusBarColor: Colors.transparent,
-                statusBarIconBrightness: Brightness.dark),
-          )),
-      // home: App(),
+        useMaterial3: true,
+        colorScheme: ColorScheme.fromSeed(seedColor: Colors.orange),
+        primarySwatch: Colors.orange,
+        primaryColor: Colors.yellow.shade200,
+        fontFamily: GoogleFonts.ubuntu().fontFamily,
+        appBarTheme: const AppBarTheme(
+          systemOverlayStyle: SystemUiOverlayStyle(
+              statusBarColor: Colors.transparent,
+              statusBarIconBrightness: Brightness.dark),
+        ),
+      ),
       home: currentUser == null ? const SignIn() : App(uid: currentUser.uid),
-      // home: AuthFinish(),
     );
   }
 }

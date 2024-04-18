@@ -16,7 +16,11 @@ class _SignInState extends State<SignIn> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Stack(children: [
-        SvgPicture.asset('assets/blob-scene-haikei.svg', fit: BoxFit.cover),
+        SvgPicture.asset(
+          'assets/blob-scene-haikei.svg',
+          fit: BoxFit.cover,
+          width: double.infinity,
+        ),
         SafeArea(
           child: Padding(
             padding: const EdgeInsets.symmetric(horizontal: 38, vertical: 6),

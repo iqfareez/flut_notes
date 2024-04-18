@@ -17,12 +17,11 @@ class _NoAuthState extends State<NoAuth> {
 
   void goToFinishAuth(String message, User user) {
     Navigator.pushReplacement(
-        context,
-        MaterialPageRoute(
-            builder: (builder) => AuthFinish(
-                  welcomeText: message,
-                  user: user,
-                )));
+      context,
+      MaterialPageRoute(
+        builder: (builder) => AuthFinish(welcomeText: message, user: user),
+      ),
+    );
   }
 
   @override
@@ -33,6 +32,7 @@ class _NoAuthState extends State<NoAuth> {
         children: [
           SvgPicture.asset(
             'assets/blob-scene-haikei-green.svg',
+            width: double.infinity,
             fit: BoxFit.cover,
           ),
           Padding(
